@@ -27,7 +27,7 @@ jobs:
         run: |
           New-Item -ItemType Directory -Path binary-library -Force | Out-Null
           $packageArchive = (Get-ChildItem -LiteralPath . -Filter 'causalmiss_*.tar.gz').FullName
-          R CMD INSTALL --library=binary-library $packageArchive
+          R.exe CMD INSTALL --library=binary-library $packageArchive
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           $packageZip = $packageArchive -replace '\.tar\.gz$', '.zip'
           & "$env:SystemRoot\System32\tar.exe" -a -c -f $packageZip -C binary-library causalmiss
