@@ -13,5 +13,7 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 Depends: R (>= 4.1.0)
 Imports: stats, graphics, utils
+URL: https://github.com/yuqi77/causalmiss
+BugReports: https://github.com/yuqi77/causalmiss/issues
 NeedsCompilation: no
 

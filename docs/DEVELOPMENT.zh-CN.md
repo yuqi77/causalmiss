@@ -22,15 +22,19 @@
 6. 更新 `NEWS.md`、版本和发布记录，发布已经验证的同一归档。
 
 ```sh
-R CMD build causalmiss --no-build-vignettes --no-manual
+R CMD build . --no-build-vignettes --no-manual
 R CMD check causalmiss_0.1.0.tar.gz --no-manual
 R CMD INSTALL causalmiss_0.1.0.tar.gz
 ```
 
-上述命令在源码父目录执行。`--no-manual` 仅略过需要 LaTeX 的 PDF 帮助手册构建；R 帮助文档、示例、代码分析与测试仍被检查。包内提供可安装的 Markdown 教程。首版没有将其伪称为经 `R CMD build` 编译的 R vignette。
+上述命令在克隆后的源码仓库目录执行。`--no-manual` 仅略过需要 LaTeX 的 PDF 帮助手册构建；R 帮助文档、示例、代码分析与测试仍被检查。包内提供可安装的 Markdown 教程。首版没有将其伪称为经 `R CMD build` 编译的 R vignette。
 
 Windows 的构建脚本会为自身进程设置 UTF-8 字符分类及子进程 locale，确保中文目录可被正确处理；不修改系统或用户的永久环境设置。
 Windows zip 由已成功安装的包目录使用系统 `tar.exe` 封装，避免依赖失效的外部 `zip.exe` 配置；安装包用全新库目录单独验证。
+
+源码仓库为 [yuqi77/causalmiss](https://github.com/yuqi77/causalmiss)。
+公开发布步骤见 [PUBLISHING.zh-CN.md](PUBLISHING.zh-CN.md)，本地检查记录见
+[LOCAL_VALIDATION.md](LOCAL_VALIDATION.md)。每次发布必须从最终提交重新构建归档，并确认 tag、Release 归档与校验信息对应同一版本。
 
 ## 扩展顺序
 

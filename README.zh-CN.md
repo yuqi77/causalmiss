@@ -7,12 +7,23 @@
 ## 安装
 
 ```r
-install.packages("实际路径/causalmiss_0.1.0.tar.gz", repos = NULL, type = "source")
+install.packages("remotes") # 用于 GitHub 安装，不是 causalmiss 的运行依赖。
+remotes::install_github("yuqi77/causalmiss", ref = "v0.1.0")
 library(causalmiss)
 help(package = "causalmiss")
 ```
 
-Windows 也可安装所附 zip 二进制包，将 `type` 改成 `"win.binary"`。只需 R >= 4.1.0，首版不需要安装 Rtools 或第三方 R 包。公开仓库暂未创建，待商定 GitHub 信息后发布。
+源码仓库地址为 [yuqi77/causalmiss](https://github.com/yuqi77/causalmiss)。
+[v0.1.0 Release](https://github.com/yuqi77/causalmiss/releases/tag/v0.1.0) 提供
+[源码 tar.gz](https://github.com/yuqi77/causalmiss/releases/download/v0.1.0/causalmiss_0.1.0.tar.gz) 和
+[Windows zip](https://github.com/yuqi77/causalmiss/releases/download/v0.1.0/causalmiss_0.1.0.zip)。下载后也可按实际文件路径安装：
+
+```r
+install.packages("实际路径/causalmiss_0.1.0.tar.gz", repos = NULL, type = "source")
+```
+
+Windows 安装 zip 时将 `type` 改成 `"win.binary"`。运行仅依赖 R 自带包，需要 R >= 4.1.0；源码安装不需要 Rtools。
+发布与各平台检查的实际完成状态见 [发布清单](RELEASE_CHECKLIST.md)。
 
 ## 主要用法
 
@@ -51,9 +62,12 @@ source(system.file("examples", "toy_workflow.R", package = "causalmiss"))
 | `inst/doc/` | 随安装提供的教程与方法映射 |
 | `inst/examples/` | 可执行合成数据示例 |
 | `inst/CITATION` | 软件与方法引用 |
-| `.github/workflows/` | 公开后自动检查与手动构建发布文件 |
+| `.github/workflows/` | Windows、macOS、Linux 自动检查与手动构建发布文件 |
 | `docs/DEVELOPMENT.zh-CN.md` | 建包流程、结构与维护方法 |
-| `docs/PUBLISHING.zh-CN.md` | 以后创建 GitHub 仓库与下载安装的步骤 |
+| `docs/PUBLISHING.zh-CN.md` | GitHub 发布、归档核对与下载安装的步骤 |
 | `LICENSE`, `LICENSE.md`, `NEWS.md` | 软件许可与版本记录 |
 
-原始 PDF、真实调查数据和原始研究脚本保留在工作区；未放进待发布的软件包。正式验证结果见工作区 `release/VALIDATION.md`。
+原始 PDF、真实调查数据和原始研究脚本保留在工作区；未放进分发的软件包。正式本地验证结果见
+[docs/LOCAL_VALIDATION.md](docs/LOCAL_VALIDATION.md)，托管检查结果见
+[GitHub Actions](https://github.com/yuqi77/causalmiss/actions)。软件问题可提交到
+[GitHub Issues](https://github.com/yuqi77/causalmiss/issues)。

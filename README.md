@@ -2,16 +2,27 @@
 
 Small R tools for causal discovery with incomplete continuous data.
 
-**Version 0.1.0 is a local first release.** It implements selected linear Gaussian
+**Version 0.1.0 is the first release.** It implements selected linear Gaussian
 components from three supplied manuscripts, with explicit method-to-code mapping.
 The package depends only on packages shipped with R (R >= 4.1.0), needs no compiler,
 and includes synthetic examples and base-R regression tests.
 
 Author and maintainer: Yuqi Qiu <yqqiu@fem.ecnu.edu.cn>.
 
-## Install the local release
+## Install
 
-From R, using the actual path to the delivered file:
+Install the tagged version from [GitHub](https://github.com/yuqi77/causalmiss):
+
+```r
+install.packages("remotes") # Installer; not a runtime dependency of causalmiss.
+remotes::install_github("yuqi77/causalmiss", ref = "v0.1.0")
+library(causalmiss)
+```
+
+The [v0.1.0 Release](https://github.com/yuqi77/causalmiss/releases/tag/v0.1.0)
+provides a [source package](https://github.com/yuqi77/causalmiss/releases/download/v0.1.0/causalmiss_0.1.0.tar.gz)
+and a [Windows binary](https://github.com/yuqi77/causalmiss/releases/download/v0.1.0/causalmiss_0.1.0.zip).
+After downloading an archive, install it from its actual local path:
 
 ```r
 install.packages("path/to/causalmiss_0.1.0.tar.gz", repos = NULL, type = "source")
@@ -19,8 +30,8 @@ library(causalmiss)
 ```
 
 Windows users can install `causalmiss_0.1.0.zip` with `type = "win.binary"`.
-The source release also works on macOS and Linux. A repository and GitHub
-installation URL will be added when public hosting is selected.
+Source installation needs no compiler. See the [release checklist](RELEASE_CHECKLIST.md)
+for publication and platform-verification status.
 
 ## Quick start
 
@@ -81,14 +92,16 @@ See [the method map](inst/doc/METHODS.md), [Chinese guide](README.zh-CN.md),
 ## Development and checks
 
 ```sh
-R CMD build causalmiss --no-build-vignettes --no-manual
+R CMD build . --no-build-vignettes --no-manual
 R CMD check causalmiss_0.1.0.tar.gz --no-manual
 R CMD INSTALL causalmiss_0.1.0.tar.gz
 ```
 
 From the repository directory, `Rscript tools/build_release.R` builds and checks
 the package and records logs outside the package source directory. CI performs
-the same check on Windows, macOS and Linux after the repository is published.
+the same check on Windows, macOS and Linux. The [local validation record](docs/LOCAL_VALIDATION.md)
+documents the checks already completed; the [Actions page](https://github.com/yuqi77/causalmiss/actions)
+shows hosted check results.
 The package uses maintained `.Rd` files rather than requiring roxygen2 at build time.
 
 ## Citation and license
@@ -97,3 +110,5 @@ Use `citation("causalmiss")` for software and method citations. The software is
 MIT licensed. Manuscript PDFs, original survey data and supplied research code
 are not bundled in this package. Their rights and access rules are separate.
 All distributed examples generate synthetic data.
+
+Report software issues through [GitHub Issues](https://github.com/yuqi77/causalmiss/issues).

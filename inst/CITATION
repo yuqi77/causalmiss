@@ -1,7 +1,8 @@
 bibentry("Manual",
   title = "causalmiss: Small Tools for Causal Discovery with Incomplete Data",
   author = person("Yuqi", "Qiu"), year = "2026",
-  note = "R package version 0.1.0; local release")
+  note = "R package version 0.1.0",
+  url = "https://github.com/yuqi77/causalmiss")
 
 bibentry("Article",
   title = "Causal discovery with incomplete data integrated from multiple sources",
