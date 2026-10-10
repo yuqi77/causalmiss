@@ -25,7 +25,8 @@ jobs:
         shell: bash
         run: |
           R CMD check causalmiss_*.tar.gz --no-manual
-          Rscript -e 'x <- readLines("causalmiss.Rcheck/00check.log"); if (any(grepl("Status:.*(ERROR|WARNING)", x))) quit(status=1)'
+          grep -q '^Status:' causalmiss.Rcheck/00check.log
+          if grep -Eq '^Status:.*(ERROR|WARNING)' causalmiss.Rcheck/00check.log; then exit 1; fi
       - uses: actions/upload-artifact@v4
         if: always()
         with:
