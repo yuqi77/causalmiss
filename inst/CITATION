@@ -1,0 +1,28 @@
+bibentry("Manual",
+  title = "causalmiss: Small Tools for Causal Discovery with Incomplete Data",
+  author = person("Yuqi", "Qiu"), year = "2026",
+  note = "R package version 0.1.0; local release")
+
+bibentry("Article",
+  title = "Causal discovery with incomplete data integrated from multiple sources",
+  author = c(person("Asrat Ayele", "Woldemariam"), person("Yingchun", "Zhou"), person("Yuqi", "Qiu")),
+  journal = "Journal of Survey Statistics and Methodology", year = "2026",
+  doi = "10.1093/jssam/smag016")
+
+bibentry("Misc",
+  textVersion = "Peng Yunjia, Qiu Yuqi and Zhou Yingchun. Doubly robust causal structure learning under missing data, with an application to health survey data. Supplied undated manuscript; publication status not asserted.",
+  title = "Doubly robust causal structure learning under missing data, with an application to health survey data",
+  author = c(person("Yunjia", "Peng"), person("Yuqi", "Qiu"), person("Yingchun", "Zhou")),
+  note = "Supplied manuscript, Complete manuscript with suppl.pdf; publication status and year are not asserted")
+
+bibentry("Misc",
+  textVersion = "Missing-data imputation and causal discovery for subsampled time series based on proxy variables. Supplied undated Chinese manuscript; original title and file locators in METHODS.md. Author metadata not asserted.",
+  title = "Missing-data imputation and causal discovery for subsampled time series based on proxy variables",
+  note = "Supplied Chinese manuscript; original title, file name and source locators in the package method map; author and year not asserted")
+
+bibentry("Article",
+  title = "Order-Independent Constraint-Based Causal Structure Learning",
+  author = c(person("Diego", "Colombo"), person("Marloes H.", "Maathuis")),
+  journal = "Journal of Machine Learning Research", year = "2014",
+  volume = "15", pages = "3921--3962",
+  url = "https://jmlr.org/papers/v15/colombo14a.html")

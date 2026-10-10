@@ -1,0 +1,17 @@
+Package: causalmiss
+Type: Package
+Title: Small Tools for Causal Discovery with Incomplete Data
+Version: 0.1.0
+Authors@R: person("Yuqi", "Qiu", email = "yqqiu@fem.ecnu.edu.cn", role = c("aut", "cre"))
+Description: Provides a small, dependency-light implementation of selected
+    components from three manuscripts on causal discovery with missing data.
+    Includes Gaussian conditional independence tests, stable skeleton search,
+    source-aware multiple imputation, pooled tests, graph-guided imputation,
+    and lag-window construction. The first version targets small continuous
+    datasets and documents the scope of each implementation.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Depends: R (>= 4.1.0)
+Imports: stats, graphics, utils
+NeedsCompilation: no
+

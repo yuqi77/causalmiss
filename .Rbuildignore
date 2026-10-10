@@ -1,0 +1,9 @@
+^\.git$
+^\.github$
+^\.gitignore$
+^LICENSE\.md$
+^docs$
+^tools$
+^README\.zh-CN\.md$
+^CONTRIBUTING\.md$
+^RELEASE_CHECKLIST\.md$

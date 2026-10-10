@@ -1,0 +1,33 @@
+name: R-CMD-check
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: release
+          rtools-version: none
+      - name: Build
+        shell: bash
+        run: R CMD build . --no-build-vignettes --no-manual
+      - name: Check
+        shell: bash
+        run: |
+          R CMD check causalmiss_*.tar.gz --no-manual
+          Rscript -e 'x <- readLines("causalmiss.Rcheck/00check.log"); if (any(grepl("Status:.*(ERROR|WARNING)", x))) quit(status=1)'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: check-${{ matrix.os }}
+          path: causalmiss.Rcheck

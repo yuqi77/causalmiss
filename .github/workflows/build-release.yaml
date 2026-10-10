@@ -1,0 +1,40 @@
+name: Build release assets
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: release
+          rtools-version: none
+      - name: Build and check
+        shell: bash
+        run: |
+          R CMD build . --no-build-vignettes --no-manual
+          R CMD check causalmiss_*.tar.gz --no-manual
+          Rscript -e 'x <- readLines("causalmiss.Rcheck/00check.log"); if (any(grepl("Status:.*(ERROR|WARNING)", x))) quit(status=1)'
+      - name: Windows binary
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Path binary-library -Force | Out-Null
+          $packageArchive = (Get-ChildItem -LiteralPath . -Filter 'causalmiss_*.tar.gz').FullName
+          R CMD INSTALL --library=binary-library $packageArchive
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $packageZip = $packageArchive -replace '\.tar\.gz$', '.zip'
+          & "$env:SystemRoot\System32\tar.exe" -a -c -f $packageZip -C binary-library causalmiss
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - uses: actions/upload-artifact@v4
+        with:
+          name: release-${{ matrix.os }}
+          path: |
+            causalmiss_*.tar.gz
+            causalmiss_*.zip
